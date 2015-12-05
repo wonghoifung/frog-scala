@@ -1,1 +1,6 @@
 # frog-scala
+
+
+scalac hello.scala
+
+scala -nocompdaemon import_hello.scala

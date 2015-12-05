@@ -223,3 +223,19 @@ val trip = Vector(Train(travelers, "Reading"), Bus(travelers, 100))
 println(travel(trip(0)))
 println(travel(trip(1)))
 
+/////////////
+
+class M(var i:Int) {
+	def +(o:M) = {
+		i += o.i
+	}
+}
+
+var m1 = new M(8)
+var m2 = new M(9)
+println(m1.i)
+println(m2.i)
+m1 + m2
+println(m1.i)
+println(m2.i)
+

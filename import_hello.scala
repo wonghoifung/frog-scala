@@ -239,3 +239,76 @@ m1 + m2
 println(m1.i)
 println(m2.i)
 
+/////////////
+
+class ble(val a:String) {
+	override def toString() = {
+		"ble with " + a
+	}
+}
+println(new ble("wong"))
+
+/////////////
+
+case class tuple(data:Double, info:String)
+
+def data(input:Double) = {
+	if(input > 5.0){
+		tuple(input * 2, "high")
+	}
+	else{
+		tuple(input * 2, "low")
+	}
+}
+println(data(7.0))
+println(data(4.0))
+
+def data2(input:Double):(Double, String) = {
+	if(input > 5.0){
+		(input * 2, "high")
+	}
+	else{
+		(input * 2, "low")
+	}
+}
+println(data2(7.0))
+println(data2(4.0))
+
+def tt = (1,2,3)
+println(tt._1)
+println(tt._2)
+println(tt._3)
+val (az,bz,cz) = tt
+println(cz,bz,az)
+
+/////////////
+
+object X {
+	val n = 2
+	def g = n * 2
+}
+println(X.n)
+println(X.g)
+
+class Count {
+	val id = Count.id()
+	override def toString = s"Count$id"
+}
+object Count {
+	var n = -1
+	def id() = {
+		n += 1;
+		n
+	}
+}
+val cv = Vector(new Count, new Count, new Count)
+println(cv)
+
+class Car(val make:String) {
+	override def toString = s"Car($make)"
+}
+object Car {
+	def apply(make:String) = new Car(make)
+}
+val mycar = Car("toyota")
+println(mycar)

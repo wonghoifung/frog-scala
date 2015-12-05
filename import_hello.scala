@@ -312,3 +312,18 @@ object Car {
 }
 val mycar = Car("toyota")
 println(mycar)
+
+/////////////
+
+class GreatApe {
+	val weight = 100.0
+	val age = 12
+}
+class Bonobo extends GreatApe 
+def display(ape:GreatApe) = {
+	s"weight: ${ape.weight}, age: ${ape.age}"
+}
+println(display(new Bonobo))
+
+
+

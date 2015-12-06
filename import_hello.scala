@@ -485,7 +485,12 @@ def fly(flyer:Element with Flight, opponent:Element) = {
 }
 println(fly(dragon1, new Fairy))
 
+/////////////
 
+// 1*1 + 3*3 + .... + 99*99
+var sum=0
+for( n <- 1 to 99) if(n%2==1) sum+=n*n 
+println(sum)
 
 
 

@@ -386,7 +386,24 @@ println(C.f)
 println(C.n)
 println(C.g)
 
+/////////////
 
+trait  Base {
+	var d3:Int
+	var n = 1
+}
+
+class Derived extends Base {
+	def d3 = n
+	def d3_=(newVal:Int) = {
+		n = newVal
+	}
+}
+
+val dddd = new Derived
+println(dddd.d3)
+dddd.d3 = 999
+println(dddd.d3)
 
 
 

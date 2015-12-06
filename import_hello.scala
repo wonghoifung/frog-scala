@@ -411,6 +411,92 @@ import java.util.Date
 val datej = new Date
 println(datej)
 
+/////////////
+
+import reflect.runtime.currentMirror
+object Name {
+	def className(o:Any) = {
+		currentMirror.reflect(o).symbol.toString.replace('$', ' ').split(' ').last
+	}
+}
+trait Name {
+	override def toString = Name.className(this)
+}
+
+class Solid extends Name
+val ssss = new Solid
+println(ssss)
+
+/////////////
+
+class Element extends Name {
+	def interact(other:Element) = s"$this interact $other"
+}
+class Inert extends Element
+class Wall extends Element
+
+trait Material {
+	def resilience:String
+}
+trait Wood extends Material {
+	def resilience = "breakable"
+}
+trait Rock extends Material {
+	def resilience = "hard"
+}
+
+class RockWall extends Wall with Rock
+class WoodWall extends Wall with Wood
+
+trait Skill
+trait Fighting extends Skill {
+	def fight = "Fight!"
+}
+trait Digging extends Skill {
+	def dig = "Dig!"
+}
+trait Magic extends Skill {
+	def castSpell = "Spell!"
+}
+trait Flight extends Skill {
+	def fly = "Fly!"
+}
+
+class Character(var player:String="None") extends Element
+class Fairy extends Character with  Magic
+class Viking extends Character with  Fighting
+class Dwarf extends Character with Digging with Fighting
+class Wizard extends Character with Magic
+class Dragon extends Character with Magic with Flight
+
+val dragon1 = new Dragon
+dragon1.player = "Puff"
+println(dragon1.interact(new Wall))
+
+def battle(fighter:Fighting) = {
+	s"$fighter, ${fighter.fight}"
+}
+println(battle(new Viking))
+println(battle(new Dwarf))
+println(battle(new Fairy with Fighting))
+
+def fly(flyer:Element with Flight, opponent:Element) = {
+	s"$flyer, ${flyer.fly}, " + s"${opponent.interact(flyer)}"
+}
+println(fly(dragon1, new Fairy))
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

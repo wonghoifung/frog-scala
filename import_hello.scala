@@ -325,5 +325,76 @@ def display(ape:GreatApe) = {
 }
 println(display(new Bonobo))
 
+/////////////
+
+class House(val address:String, val state:String, val zip:String) {
+	def this(state:String, zip:String) = {
+		this("address?", state, zip)
+	}
+	def this(zip:String) = {
+		this("address?", "state?", zip)
+	}
+}
+class Home(address:String, state:String, zip:String, val name:String) extends House(address, state, zip) {
+	override def toString = s"$name: $address, $state, $zip"
+}
+println(new Home("aaa","sss","zzz","nnn"))
+
+/////////////
+
+object Level extends Enumeration {
+	//type Level = Value
+	val Overflow, High, Medium, Low, Empty = Value
+}
+println(Level.Medium)
+import Level._
+println(Medium)
+println( { for( n <- Range(0, Level.maxId)) yield (n, Level(n)) } )
+println( { for( n <- Level.values) yield n }.toIndexedSeq )
+
+/////////////
+
+abstract class Animal {
+	def templateMethod = s"the $animal goes $sound"
+	def animal:String
+	def sound:String
+}
+class Duck extends Animal {
+	def animal = "Duck"
+	override def sound = "Quack" // override is optional
+}
+println((new Duck).templateMethod)
+
+/////////////
+
+trait A {
+	def f = 1.1
+	def g = "A.g"
+	val n = 7
+}
+trait  B {
+	def f = 7.7
+	def g = "B.g"
+	val n = 17
+}
+object C extends A with  B {
+	override def f = 9.9
+	override val n = 27
+	override def g = super[A].g + super[B].g
+}
+println(C.f)
+println(C.n)
+println(C.g)
+
+
+
+
+
+
+
+
+
+
+
 
 

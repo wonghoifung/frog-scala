@@ -405,7 +405,11 @@ println(dddd.d3)
 dddd.d3 = 999
 println(dddd.d3)
 
+/////////////
 
+import java.util.Date
+val datej = new Date
+println(datej)
 
 
 

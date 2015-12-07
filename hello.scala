@@ -1,5 +1,15 @@
 package hello
 
+package object people {
+  val defaultName = "John Q. Public"
+}
+ 
+package people {
+  class Person {
+    val name = defaultName
+  }
+}
+
 class aabb {
 	def f1(a:Double, b:Double):Double = {
 		Math.sqrt(a * a + b * b)
@@ -8,3 +18,4 @@ class aabb {
 		a * b / 2
 	}
 }
+

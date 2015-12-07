@@ -492,8 +492,18 @@ var sum=0
 for( n <- 1 to 99) if(n%2==1) sum+=n*n 
 println(sum)
 
+/////////////
 
+val successors = Map(1 -> 2, 2 -> 3, 3 -> 4)
+successors.get(5) match {
+	case Some(n) => println(s"successor is $n")
+	case None => println("found no successor")
+}
 
+// TODO
+// import hello.people._
+// val pp = new Person
+// println(pp.name)
 
 
 

@@ -1,6 +1,7 @@
 import scala.concurrent._
 import java.util.concurrent.atomic._
 import scala.collection._
+import java.util.concurrent.{BlockingQueue, LinkedBlockingQueue}
 import scala.annotation.tailrec
 
 object collectionTest extends App {
@@ -43,5 +44,16 @@ object collectionTest extends App {
 	asyncAdd(10 until 20)
 
 	Thread.sleep(500)
+
+	//////////////////////
+
+	val queue = new LinkedBlockingQueue[String]
+	for (i <- 1 to 5500) queue.offer(i.toString)
+	execute {
+		val it = queue.iterator
+		while (it.hasNext) println(it.next())
+	}
+	for (i <- 1 to 5500) queue.poll()
+	Thread.sleep(1000)
 
 }

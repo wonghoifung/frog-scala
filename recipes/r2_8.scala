@@ -1,0 +1,8 @@
+println(1 to 10)
+println(1 to 10 by 2)
+println(1 to 10 by 3)
+for (i <- 1 to 5) println(i)
+for (i <- 1 until 5) println(i)
+println(1 to 10 toArray)
+println(1 to 10 toList)
+println((1 to 10).toList)
